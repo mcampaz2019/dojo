@@ -1,0 +1,29 @@
+@model DojoSurveyModels.Models.DojoComment;
+@{
+    ViewData["Title"] = "Comment Result";
+}
+
+
+<div class="row">
+    <div class="col-2"></div>    
+    <div class="card border-primary mb-4 col-6" >                
+        <div class="card-body">
+            <div class="jumbotron jumbotron-sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 col-lg-10">
+                            <h1 class="h1">
+                                Submitted Info
+                            </h1>
+                            <p>Name: @Model.Name</p>
+                            <p>Location: @Model.DojoLocation</p>
+                            <p>Favorite Language: @Model.FavoriteLanguage</p>
+                            <p>Comment: @Model.Comment</p>
+                            <a href="~/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
