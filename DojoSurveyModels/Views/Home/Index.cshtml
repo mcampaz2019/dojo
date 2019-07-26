@@ -10,13 +10,14 @@
     <div class="card border-primary mb-4 col-6" >                
         <div class="card-body">
                             <!-- Default form contact -->
-            <form class=" border border-light p-5" action="CommentResult" method="post">
+            @model DojoComment
+            <form class=" border border-light p-5" asp-controller="Home" asp-action="CommentResult" method="post">
 
                 <p class="h4 mb-4 text-center">Dojo Survey Index</p>
 
                 <!-- Name -->
-                <input type="text" id="defaultContactFormName" class="form-control mb-4" name="name"  
-                    required="required" placeholder="Name">
+                <span asp-validation-for="Name"></span>
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" asp-for="Name" required="required" placeholder="Name">
 
                 <!-- Subject -->
                 <label>Dojo Location</label>
