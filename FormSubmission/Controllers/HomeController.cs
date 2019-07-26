@@ -15,9 +15,23 @@ namespace FormSubmission.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost("register")]
+        public IActionResult Register(User newUser)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Result");
+            }
+            else
+            {
+                return View("Index");
+            }
+            
+        }
+
+        public IActionResult Result()
+        {
+            return View("Result");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
