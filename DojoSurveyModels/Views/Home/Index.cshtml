@@ -2,7 +2,53 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="row">
+            <div class="col-2"></div>    
+            <div class="card border-primary mb-4 col-6" >                
+                <div class="card-body">
+                                <!-- Default form contact -->
+                    <form class="text-center border border-light p-5" action="DojoSurvey" method="post">
+
+                        <p class="h4 mb-4">Dojo Survey Index</p>
+
+                        <!-- Name -->
+                        <input type="text" id="defaultContactFormName" class="form-control mb-4" name="name"  required="required" placeholder="Name">
+
+                        <!-- Subject -->
+                        <label>Dojo Location</label>
+                        <select class="browser-default custom-select mb-4" name="location">
+                            @{
+                                for(int i = 0; i < location.Count; i++){
+                                    if(i == 0){
+                                        <option value="@i" selected >@location[i]</option>
+                                    }
+                                    <option value="@i" >@location[i]</option>
+                                }
+                            }
+                        </select>
+
+                        <!-- Favorite Language -->
+                        <label>Favorite Language</label>
+                        <select class="browser-default custom-select mb-4" name="language">
+                            @{
+                                for(int i = 0; i < language.Count; i++){
+                                    if(i == 0){
+                                        <option value="@i" selected >@language[i]</option>
+                                    }
+                                    <option value="@i" >@language[i]</option>
+                                }
+                            }
+                        </select>
+
+                        <!-- Message -->
+                        <div class="form-group">
+                            <textarea class="form-control rounded-0" name="message" id="exampleFormControlTextarea2" rows="5" placeholder="Comment (Optional): "></textarea>
+                        </div>
+
+                        <!-- Send button -->
+                        <button class="btn btn-info btn-block col-2 " type="submit">Send</button>
+
+                    </form>
+                </div>
+            </div>    
+        </div>
