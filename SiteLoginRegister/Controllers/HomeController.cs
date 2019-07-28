@@ -15,9 +15,32 @@ namespace SiteLoginRegister.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost("register")]
+        public IActionResult Register(User newUser)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Result");
+            }
+            else
+            {
+                return View("Index");
+            }
+            
+        }
+        
+        [HttpPost("login")]
+        public IActionResult Login(UserLogin currentUser)
+        {
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Result");
+            }
+            else
+            {
+                return View("Index");
+            }
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
