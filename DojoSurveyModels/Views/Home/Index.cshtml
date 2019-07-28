@@ -9,58 +9,53 @@
     <div class="col-2"></div>    
     <div class="card border-primary mb-4 col-6" >                
         <div class="card-body">
-                            <!-- Default form contact -->
+                            
             @model DojoComment
-            <form class=" border border-light p-5" asp-controller="Home" asp-action="CommentResult" method="post">
+            <form class=" border border-light p-5" asp-controller="Home" asp-action="ProcessComment" method="POST">
 
                 <p class="h4 mb-4 text-center">Dojo Survey Index</p>
 
-                <!-- Name -->
-                <span asp-validation-for="Name"></span>
-                <input type="text" id="defaultContactFormName" class="form-control mb-4" asp-for="Name" required="required" placeholder="Name">
-
-                <!-- Subject -->
-                <label>Dojo Location</label>
-                <select class="browser-default custom-select mb-4" name="location">
-                    @{
-                        var i = 0;
-                        foreach(string city in location){
-                            if(i == 0){
-                                <option value="@city" selected >@city</option>
-                                i++;
-                            }
-                            <option value="@city" >@city</option>
-                            i++;
-                        }
-                    }
-                </select>
-
-                <!-- Favorite Language -->
-                <label>Favorite Language</label>
-                <select class="browser-default custom-select mb-4" name="language">
-                    @{
-                        var j = 0;
-                        foreach(string favLanguage in language){
-                            if(j == 0){
-                                <option value="@favLanguage" selected >@favLanguage</option>
-                                j++;
-                            }
-                            <option value="@favLanguage" >@favLanguage</option>
-                            j++;
-                        }
-                    }
-                </select>
-
-                <!-- Message -->
                 <div class="form-group">
-                    <label class="justified">Comment (Optional):</label>
-                    <textarea class="form-control rounded-0" name="message" id="comment" rows="5" placeholder="Comment (Optional): ">
+                <label asp-for="Name"></label>
+                <input type="text" class="form-control mb-4" asp-for="Name" placeholder="Name">
+                <span asp-validation-for="Name" class="badge badge-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                <label asp-for="DojoLocation">Dojo Location</label>
+                <select class="browser-default custom-select mb-4" asp-for="DojoLocation">
+                    @{
+                        <option value=""></option>
+                        foreach(string city in location){                            
+                            <option value="@city" >@city</option>                            
+                        }
+                    }
+                </select>
+                <span asp-validation-for="DojoLocation" class="badge badge-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                <label asp-for="FavoriteLanguage">Favorite Language</label>
+                <select class="browser-default custom-select mb-4" asp-for="FavoriteLanguage">
+                    @{
+                        <option value=""></option>
+                        foreach(string favLanguage in language){                            
+                            <option value="@favLanguage" >@favLanguage</option>                            
+                        }
+                    }
+                </select>
+                <span asp-validation-for="FavoriteLanguage" class="badge badge-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="justified" asp-for="Comment">Comment (Optional):</label><span asp-validation-for="Comment" class="badge badge-pill badge-danger"></span>
+                    <textarea class="form-control rounded-0" asp-for="Comment" rows="5" >
                     </textarea>
                 </div>
-
-                <!-- Send button -->
+                
+                <div class="form-group">
                 <button class="btn btn-info btn-block col-2 " type="submit">Send</button>
-
+                </div>
             </form>
         </div>
     </div>    

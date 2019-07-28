@@ -43,22 +43,28 @@ namespace DojoSurveyModels.Controllers
         {            
             ViewBag.language = this.language;
             ViewBag.location = this.location;
-            Console.WriteLine(ViewBag);
             return View();
         }
 
-        [HttpPost("commentresult")]
-        public IActionResult CommentResult(string name, string location, string language, string message)
+        [HttpPost("processComment")]
+        public IActionResult ProcessComment(DojoComment thisComment)
         {
-            DojoComment model = new DojoComment()
+            if(ModelState.IsValid)
             {
-                Name = name,
-                DojoLocation = location,
-                FavoriteLanguage = language,
-                Comment = message
-            };
+                return RedirectToAction("CommentResult", thisComment); 
+            }
+            else
+            { 
+                ViewBag.language = this.language;
+                ViewBag.location = this.location;
+                return View("Index");                
+            }
             
-            return View("CommentResult", model);
+        }
+        
+        public IActionResult CommentResult(DojoComment thisComment)
+        {
+            return View("CommentResult", thisComment);                 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
