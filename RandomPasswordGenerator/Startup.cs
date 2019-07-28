@@ -30,7 +30,7 @@ namespace RandomPasswordGenerator
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -45,7 +45,8 @@ namespace RandomPasswordGenerator
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            
+            app.UseSession();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
