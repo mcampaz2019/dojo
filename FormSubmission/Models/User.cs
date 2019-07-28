@@ -17,6 +17,10 @@ namespace FormSubmission.Models
         [Required]
         [Range(0, 200)]
         public int Age { get; set; }
+        
+        [Required]
+        [FutureDate]
+        public string Birthday { get; set; }
 
         [Required]
         [EmailAddress]
