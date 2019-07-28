@@ -30,7 +30,7 @@ namespace SiteLoginRegister.Controllers
         }
         
         [HttpPost("login")]
-        public IActionResult Login(UserLogin currentUser)
+        public IActionResult Login(LoginUser currentUser)
         {
             if(ModelState.IsValid)
             {

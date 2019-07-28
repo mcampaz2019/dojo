@@ -26,8 +26,8 @@ namespace SiteLoginRegister.Models
         
         [Required]
         [MinLength(8)]
+        [Compare("Password", ErrorMessage = "Please, enter a matching password!" ) ]
         [DataType(DataType.Password)]
-        [VerifiedPass]
         public string ConfirmPassword { get; set; }
     }
 }
