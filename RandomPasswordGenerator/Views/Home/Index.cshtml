@@ -2,7 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form class="col-10">
+    <div class="card border-primary mb-10 px-2 rounded text-center">
+        <div class="card-body">
+            <h4 class="text-primary">Random passcode (passcode # Counter)</h4>
+            <div class="form-row align-items-center p-2">
+                <div class="col-4"></div>
+                <h1 class="card-text"><div class="badge badge-pill badge-success mb-10 p-4">12345678901234</div> </h1>
+            </div>
+            <div class="form-row align-items-center mt10 mb-10 p-4">
+            <div class="col-5"></div>
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </div>
+        </div>
+    </div>
+</form>
