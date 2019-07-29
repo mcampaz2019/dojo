@@ -13,7 +13,7 @@ namespace DjoDachiApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
+            
             return RedirectToAction("dojodachi");
         }
 
