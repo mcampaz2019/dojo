@@ -19,9 +19,7 @@ namespace RandomPasswordGenerator.Controllers
                                 'w','x','y','z'
                                 };
         Random random = new Random();  
-        string code = String.Empty;
-        
-        
+        string code = String.Empty;    
         
         public char generateNext(){
             int index = this.random.Next(0, cipher.Count);
@@ -35,38 +33,40 @@ namespace RandomPasswordGenerator.Controllers
                 return System.Char.ToUpper(cipher[index]);
             }
         }
-    
-        public IActionResult Index()
-        {            
-            if(HttpContext.Session.GetInt32("count") == null)
-            {
-                HttpContext.Session.SetInt32("count", 1);
-                for(int i = 0; i < 14; i++)            
+
+        public void generatePass(int codeLength){
+            for(int i = 0; i < codeLength; i++)            
                 {
                     code += generateNext();
                 }
+        }
+    
+        [HttpGet]
+        public IActionResult Index()
+        {            
+            if(HttpContext.Session.GetString("code") == null)
+            {
+                generatePass(14);                
                 HttpContext.Session.SetString("code", code.ToString());
             }
-            else
+            if(HttpContext.Session.GetInt32("times") == null)
             {
-                int? counter = HttpContext.Session.GetInt32("count") + 1;
-                HttpContext.Session.SetInt32("count", (int)counter);                
+                HttpContext.Session.SetInt32("times", 1);                
             }
-            ViewBag.Count = HttpContext.Session.GetInt32("count");
             ViewBag.Code = HttpContext.Session.GetString("code");
+            ViewBag.Count = HttpContext.Session.GetInt32("times");
             return View();
         }
 
-        [HttpPost("Generate")]
+        [HttpGet("Generate")]
         public IActionResult Generate()
         {
-            for(int i = 0; i < 14; i++)            
-            {
-                code += generateNext();
-            }
-            ViewBag.Count = HttpContext.Session.GetInt32("count");
+            generatePass(14);
+            
+            int? counting = HttpContext.Session.GetInt32("times");
+            counting++;
             HttpContext.Session.SetString("code", code.ToString());
-            ViewBag.Code = HttpContext.Session.GetString("code");
+            HttpContext.Session.SetInt32("times", (int)counting);
             return RedirectToAction("Index");
         }
 

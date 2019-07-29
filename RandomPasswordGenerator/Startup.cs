@@ -31,6 +31,7 @@ namespace RandomPasswordGenerator
             });
 
             services.AddSession();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -47,6 +48,7 @@ namespace RandomPasswordGenerator
             }
             
             app.UseSession();
+            
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
