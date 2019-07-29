@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DojoDachiApp.Models;
+using DjoDachiApp.Models;
 
-namespace DojoDachiApp.Controllers
+namespace DjoDachiApp.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,7 +15,10 @@ namespace DojoDachiApp.Controllers
             return View();
         }
 
-
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
