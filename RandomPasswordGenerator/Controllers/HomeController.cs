@@ -41,26 +41,33 @@ namespace RandomPasswordGenerator.Controllers
             if(HttpContext.Session.GetInt32("count") == null)
             {
                 HttpContext.Session.SetInt32("count", 1);
-                
+                for(int i = 0; i < 14; i++)            
+                {
+                    code += generateNext();
+                }
+                HttpContext.Session.SetString("code", code.ToString());
             }
             else
             {
                 int? counter = HttpContext.Session.GetInt32("count") + 1;
                 HttpContext.Session.SetInt32("count", (int)counter);                
             }
+            ViewBag.Count = HttpContext.Session.GetInt32("count");
             ViewBag.Code = HttpContext.Session.GetString("code");
             return View();
         }
 
+        [HttpPost("Generate")]
         public IActionResult Generate()
         {
             for(int i = 0; i < 14; i++)            
             {
                 code += generateNext();
             }
+            ViewBag.Count = HttpContext.Session.GetInt32("count");
             HttpContext.Session.SetString("code", code.ToString());
-            
-            return View("Index");
+            ViewBag.Code = HttpContext.Session.GetString("code");
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
