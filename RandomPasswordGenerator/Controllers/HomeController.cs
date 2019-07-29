@@ -19,7 +19,7 @@ namespace RandomPasswordGenerator.Controllers
                                 'w','x','y','z'
                                 };
         Random random = new Random();  
-        string code;
+        string code = String.Empty;
         
         
         
@@ -37,9 +37,18 @@ namespace RandomPasswordGenerator.Controllers
         }
     
         public IActionResult Index()
-        {
-            HttpContext.Session.SetInt32("Count", 0);
-            ViewBag.Count = HttpContext.Session.GetInt32("count") + 1;
+        {            
+            if(HttpContext.Session.GetInt32("count") == null)
+            {
+                HttpContext.Session.SetInt32("count", 1);
+                
+            }
+            else
+            {
+                int? counter = HttpContext.Session.GetInt32("count") + 1;
+                HttpContext.Session.SetInt32("count", (int)counter);                
+            }
+            ViewBag.Code = HttpContext.Session.GetString("code");
             return View();
         }
 
@@ -50,6 +59,7 @@ namespace RandomPasswordGenerator.Controllers
                 code += generateNext();
             }
             HttpContext.Session.SetString("code", code.ToString());
+            
             return View("Index");
         }
 
