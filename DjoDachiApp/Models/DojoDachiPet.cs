@@ -1,3 +1,4 @@
+using System;
 namespace DjoDachiApp.Models
 {
     public class DojoDachiPet
@@ -44,6 +45,11 @@ namespace DjoDachiApp.Models
                 Energy += selector(5, 10);
                 Meals--;
             }
+        }
+        private int selector(int min, int max)
+        {
+            Random rand = new Random();
+            return rand.Next(min, max);
         }
     }
 }
