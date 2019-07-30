@@ -11,16 +11,23 @@ namespace DjoDachiApp.Controllers
 {
     public class HomeController : Controller
     {
+        DojoDachiPet dachiPet = new DojoDachiPet();
+
         [HttpGet]
         public IActionResult Index()
         {
             
+            HttpContext.Session.SetObjectAsJson("myDachiPet", dachiPet);
             return RedirectToAction("dojodachi");
         }
 
         [HttpGet("dojodachi")]
         public IActionResult DojoDachi(){
-
+            DojoDachiPet thisDachiPet = HttpContext.Session.GetObjectFromJson<DojoDachiPet>("myDachiPet");
+            ViewBag.Fullness = thisDachiPet.Fullness;
+            ViewBag.Happiness = thisDachiPet.Happiness;
+            ViewBag.Meals = thisDachiPet.Meals;
+            ViewBag.Energy = thisDachiPet.Energy;
             return View();
         }
 

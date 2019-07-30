@@ -16,9 +16,9 @@ namespace DjoDachiApp.Models
             Meals = meals;
         }
 
-        public bool IsFull => (Happiness > 100 && Fullness > 100 && Energy > 100);
+        public bool IsFull => (Happiness >= 100 && Fullness >= 100 && Energy >= 100);
 
-        public bool IsDead => (Happiness <= 0 || Fullness <= 0);
+        public bool IsDead => (Happiness <= 0 || Fullness <= 0 || Energy <= 0);
 
         public void playWith(){
             if(Meals > 0)
