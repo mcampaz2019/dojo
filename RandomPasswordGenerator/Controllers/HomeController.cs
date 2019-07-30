@@ -11,19 +11,19 @@ namespace RandomPasswordGenerator.Controllers
 {
     
     public class HomeController : Controller
-    {    
-        List<char> cipher = new List<char>(){ 
+    {            
+        public char generateNext()
+        {
+            List<char> cipher = new List<char>(){ 
                                 '0','1','2','3','4','5','6','7','8','9',
                                 'a','b','c','d','e','f','g','h','i','j',
                                 'l','m','n','o','p','q','r','s','t','u','v',
                                 'w','x','y','z'
                                 };
-        Random random = new Random();  
-        string code = String.Empty;    
-        
-        public char generateNext(){
-            int index = this.random.Next(0, cipher.Count);
-            int toUpper = this.random.Next(0,2);
+            Random random = new Random();  
+            
+            int index = random.Next(0, cipher.Count);
+            int toUpper = random.Next(0,2);
             if(toUpper == 0)
             {
                 return cipher[index];
@@ -34,20 +34,22 @@ namespace RandomPasswordGenerator.Controllers
             }
         }
 
-        public void generatePass(int codeLength){
+        public string generatePass(int codeLength){
+            string code = String.Empty;
             for(int i = 0; i < codeLength; i++)            
-                {
-                    code += generateNext();
-                }
+            {
+                code += generateNext();
+            }
+            return code;                
         }
     
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult Index()
         {            
             if(HttpContext.Session.GetString("code") == null)
             {
-                generatePass(14);                
-                HttpContext.Session.SetString("code", code.ToString());
+                string code = generatePass(14);                
+                HttpContext.Session.SetString("code", code);
             }
             if(HttpContext.Session.GetInt32("times") == null)
             {
@@ -61,19 +63,13 @@ namespace RandomPasswordGenerator.Controllers
         [HttpGet("Generate")]
         public IActionResult Generate()
         {
-            generatePass(14);
+            string code = generatePass(14);
             
             int? counting = HttpContext.Session.GetInt32("times");
             counting++;
-            HttpContext.Session.SetString("code", code.ToString());
+            HttpContext.Session.SetString("code", code);
             HttpContext.Session.SetInt32("times", (int)counting);
             return RedirectToAction("Index");
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
