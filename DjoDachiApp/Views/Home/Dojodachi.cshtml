@@ -1,24 +1,28 @@
 @{
     ViewData["Title"] = "Dojo Dachi";
 }
+@using DjoDachiApp.Models;
 
 <div class="card text-white bg-info mb-3 col-12" >
-    <div class="card-header">
-        <ul class="list-group list-group-horizontal-md">    
-            <li class="list-group-item list-group-item-primary col-3"><h3>Fullness<span class="badge badge-light ml-4">@ViewBag.Fullness</span></h3></li>  
-            <li class="list-group-item list-group-item-success col-3"><h3>Happiness<span class="badge badge-light ml-4">@ViewBag.Happiness</span></h3></li>
-            <li class="list-group-item list-group-item-danger col-3"><h3>Meals<span class="badge badge-light ml-4">@ViewBag.Meals</span></h3></li>
-            <li class="list-group-item list-group-item-warning col-3"><h3>Energy<span class="badge badge-light ml-4">@ViewBag.Energy</span></h3></li>
-        </ul>
-    </div>
-    <img src="../images/640x360.png" class="img-fluid align-self-center mt-2 pt-3 rounded max-width:80%" alt="...">
-    <div class="card-body align-center">
-        <button class="card-title btn btn-warning btn-lg btn-block font-weight-bold disabled">Your move!</button>
-    </div>
-    <div class="card-footer row">
-        <button type="button" class="btn btn-primary col-3 ml-3 mr-3">Feed</button>
-        <button type="button" class="btn btn-warning col-3 mr-3">Play</button>
-        <button type="button" class="btn btn-success col-3 mr-3">Work</button>
-        <button type="button" class="btn btn-danger col-2">Sleep</button>
-    </div>
+    @model DojoDachiPet
+    <form asp-controller="Home" asp-action="/processMove" method="post">
+        <div class="card-header">
+            <ul class="list-group list-group-horizontal-md">    
+                <li class="list-group-item list-group-item-primary col-3"><h3>Fullness<span class="badge badge-light ml-4">@Model.Fullness</span></h3></li>  
+                <li class="list-group-item list-group-item-success col-3"><h3>Happiness<span class="badge badge-light ml-4">@Model.Happiness</span></h3></li>
+                <li class="list-group-item list-group-item-danger col-3"><h3>Meals<span class="badge badge-light ml-4">@Model.Meals</span></h3></li>
+                <li class="list-group-item list-group-item-warning col-3"><h3>Energy<span class="badge badge-light ml-4">@Model.Energy</span></h3></li>
+            </ul>
+        </div>
+        <img src="../images/640x360.png" class="img-fluid align-self-center mt-2 pt-3 rounded max-width:80%" alt="...">
+        <div class="card-body align-center">
+            <button class="card-title btn btn-warning btn-lg btn-block font-weight-bold disabled">Your move!</button>
+        </div>       
+        <div class="card-footer row">
+            <button type="submit" class="btn btn-primary col-3 ml-3 mr-3" name="move" value="feed">Feed</button>
+            <button type="submit" class="btn btn-warning col-3 mr-3" name="move" value="play">Play</button>
+            <button type="submit" class="btn btn-success col-3 mr-3" name="move" value="work">Work</button>
+            <button type="submit" class="btn btn-danger col-2" name="move" value="sleep">Sleep</button>
+        </div>
+    </form>
 </div>

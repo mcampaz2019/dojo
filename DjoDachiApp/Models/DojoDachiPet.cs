@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace DjoDachiApp.Models
 {
     public class DojoDachiPet
