@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@using QuotingDojo.Models;
 
 <div class="text-center">
     <div class="card card-primary">
@@ -10,24 +10,21 @@
         </div>
         <div class="card-body">
             @model Quote
-            <form asp-controller="Home" asp-action="ProcessQuote" method="post">
+            <form>
                 <div class="row m-1 p-1">
-                    <span asp-validation-for="Name"></span>
-                    <label asp-for="Name" class="col-2 mr-1"></label>
-                    <input asp-for="Name" placeholder="   Name...">
+                    <span asp-validation-for="UserName"></span>
+                    <label asp-for="UserName" class="col-2 mr-1"></label>
+                    <input asp-for="UserName" placeholder="   Name...">
                 </div>
                 <div class="row input-group input-group-large m-1 p-1">
                     <span asp-validation-for="QuoteStatement"></span>
                     <label asp-for="QuoteStatement" class="col-2 mr-1"></label>
                     <textarea asp-for="QuoteStatement" rows="8" class="col-8 m-1 p-1" placeholder="Quoting......"></textarea>
                 </div>
-
-                <div class="car-footer">
-                    <div class="btn-group col-10">
-                        <button type="button" class="btn btn-primary btn-lg" name="submit" value="add">Add my quote!</button>
-                        <div class="col-5"></div>
-                        <button type="button" class="btn btn-success btn-lg" name="submit" value="skip">Skip to quotes!</button>
-                    </div>
+                <div class="row">
+                    <button formaction="AddQuote" type="submit" class="btn btn-primary btn-lg" name="add" value="add" formmethod="post">Add my quote!</button>
+                    <div class="col-5"></div>
+                    <button formaction="SkipQuotes" type="submit" class="btn btn-success btn-lg" name="skip" value="skip" formmethod="post">Skip to quotes!</button>
                 </div>
             </form>
         </div>

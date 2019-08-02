@@ -18,23 +18,28 @@ namespace QuotingDojo.Controllers
             return View();
         }
 
-        [HttpPost("processQuote")]
-        public IActionResult ProcessQuote(Quote thisQuote, string name)
+        [HttpPost("addquote")]
+        public IActionResult AddQuote(Quote thisQuote)
         {
-            if(name == "add")
+            if(thisQuote != null)
             {
-                String query = $"INSERT INTO 'the_quoting_dojo'.'quote' ('name', 'quote_statement') VALUES ('{thisQuote.Name}', '{thisQuote.QuoteStatement}')";
+                String query = $"INSERT INTO quote (name, quote_statement) VALUES ('{thisQuote.UserName}', '{thisQuote.QuoteStatement}')";
                 DbConnector.Execute(query);
             }
             return RedirectToAction("quotes");
         }
 
-        [HttpGet("quotes")]
-        public IActionResult Quotes()
+        [HttpPost("skipquotes")]
+        public IActionResult SkipQuotes(Quote thisQuote)
         {
-            return View("Quotes");
+            return RedirectToAction("Index");
         }
 
+        [HttpGet("quotes")]
+        public IActionResult Quotes(Quote thisQuote)
+        {
+            return RedirectToAction("Quotes");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
