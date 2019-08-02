@@ -10,7 +10,15 @@
         </div>
         <div class="card-body">
             <div class="list-group">
-            
+                @foreach (var quote in ViewBag.Quotes)
+                {
+                    <div class="list-group-item d-flex w-100 justify-content-between">
+                        <li>
+                            <p>@quote["quote_statement"]</p>
+                            <strong>@quote["name"]</strong><small>@quote["updated_at"]</small>
+                        </li>
+                    </div>
+                }
             </div>
         </div>
     </div>

@@ -32,13 +32,16 @@ namespace QuotingDojo.Controllers
         [HttpPost("skipquotes")]
         public IActionResult SkipQuotes(Quote thisQuote)
         {
-            return RedirectToAction("Index");
+            return View("Index");
         }
 
         [HttpGet("quotes")]
-        public IActionResult Quotes(Quote thisQuote)
+        public IActionResult Quotes()
         {
-            return RedirectToAction("Quotes");
+            List<Dictionary<string, object>> AllQuotes = DbConnector.Query("SELECT * FROM quote");
+            ViewBag.Quotes = AllQuotes;
+            
+            return View("Quotes");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
