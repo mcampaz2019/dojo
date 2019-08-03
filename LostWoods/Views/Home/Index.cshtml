@@ -1,10 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using LostWoods.Models;
+@model List<Trail>;
 
 <div class="text-center">
-    <div class="jumbotron bg-primary text-white">
-        <H1>Lost In The Woods </H1>
+    <div class="bg-primary text-white">
+        <h1>Lost In The Woods </h1>
         <p>List of Hiking Trails near Seattle</p>
     </div>
     <div class="card">
@@ -13,19 +15,34 @@
                 <thead class="bg-primary">
                     <th scope="col" class="p-2 bd-highlight w-35  font-weight-bolder">Trail Name</th>
                     <th class="p-2 bd-highlight w-15 font-weight-bolder">Length</th>
-                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Elevation</th>
+                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Elevation Gain</th>
                     <th class="p-2 bd-highlight w-15 font-weight-bolder">Max Elevation</th>
+                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Logitude</th>
+                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Latitude</th>
                     <th class="p-2 bd-highlight w-20 font-weight-bolder">Updated At</th>
                 </thead>
-                <tbody class="text-primary">                    
-                    <tr>
-                        <th scope="row">Chelan Butte</th>
-                        <td >Mark</td>
-                        <td >Otto</td>                    
-                    </tr>
+                <tbody class="text-primary">
+                    @foreach (var trail in Model)
+                    {
+                        <tr>
+                            <th scope="row">@trail.TrailName</th>
+                            <td >@trail.Length miles, roundtrip</td>
+                            <td >@trail.ElevationGain ft.</td>
+                            <td >@trail.MaxElevation ft.</td>
+                            <td >@trail.Longitude</td>
+                            <td >@trail.Latitude</td>
+                            <td >@trail.UpdatedAt</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
-            
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex flex-row flex-row-reverse mb-3">
+            <a href="NewTrail" class="btn btn-success btn-lg align font-weight-bolder" role="button">
+                Add a new Trail
+            </a>
         </div>
     </div>
 </div>

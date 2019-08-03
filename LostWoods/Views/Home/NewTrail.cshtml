@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "New Trail";
+}
+@using LostWoods.Models;
+
+<div class="card border-primary mb-5">
+    <div class="card-header border-primary mb-5 text-primary">
+        <h1>Add A New Trail</h1>
+    </div>
+    <div class="card-body">
+        @model Trail
+        <form asp-controller="Home" asp-action="ProcessAdd" method="post">
+            <div class="form-control">
+                <span asp-validation-for="TrailName"></span>
+                <label asp-for="TrailName"></label>
+                <input asp-for="TrailName"/>
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="Length"></span>
+                <label asp-for="Length"></label>
+                <input asp-for="Length"/>
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="ElevationGain"></span>
+                <label asp-for="ElevationGain"></label>
+                <input asp-for="ElevationGain"/>
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="MaxElevation"></span>
+                <label asp-for="MaxElevation"></label>
+                <input asp-for="MaxElevation"/>
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="Longitude"></span>
+                <label asp-for="Longitude"></label>
+                <input asp-for="Longitude"/>
+            </div>
+            <div class="form-control">
+                <span asp-validation-for="Latitude"></span>
+                <label asp-for="Latitude"></label>
+                <input asp-for="Latitude"/>
+            </div>
+            <div class="form-control">
+                <input type="submit" class="btn btn-primary" value="Create Record"/>
+            </div>
+        </form>
+    </div>
+</div>
