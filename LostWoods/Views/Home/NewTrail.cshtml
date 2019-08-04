@@ -10,37 +10,47 @@
     <div class="card-body">
         @model Trail
         <form asp-controller="Home" asp-action="ProcessAdd" method="post">
-            <div class="form-control">
-                <label asp-for="TrailName"></label>
+            <div class="">
+                <label asp-for="TrailName" class="col-2"></label>
                 <input asp-for="TrailName"/>
                 <span asp-validation-for="TrailName" class="text-danger"></span>
             </div>
-            <div class="form-control">
-                <label asp-for="Length"></label>
+            <div class="">
+                <label asp-for="Description" class="align-top col-2"></label>
+                <input asp-for="Description"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="">
+                <label asp-for="Length" class="col-2"></label>
                 <input asp-for="Length"/>
                 <span asp-validation-for="Length" class="text-danger"></span>
             </div>
-            <div class="form-control">
-                <label asp-for="ElevationGain"></label>
+            <div class="">
+                <label asp-for="ElevationGain" class="col-2"></label>
                 <input asp-for="ElevationGain"/>
                 <span asp-validation-for="ElevationGain" class="text-danger"></span>
             </div>
-            <div class="form-control">
-                <label asp-for="MaxElevation"></label>
+            <div class="">
+                <label asp-for="MaxElevation" class="col-2"></label>
                 <input asp-for="MaxElevation"/>
                 <span asp-validation-for="MaxElevation" class="text-danger"></span>
             </div>
-            <div class="form-control">
-                <label asp-for="Longitude"></label>
+            <div class="">
+                <label asp-for="Longitude" class="col-2"></label>
                 <input asp-for="Longitude"/>
                 <span asp-validation-for="Longitude" class="text-danger"></span>
             </div>
-            <div class="form-control">
-                <label asp-for="Latitude"></label>
+            <div class="">
+                <label asp-for="Latitude" class="col-2"></label>
                 <input asp-for="Latitude"/>
                 <span asp-validation-for="Latitude" class="text-danger"></span>
             </div>
-            <div class="form-control">
+            <div class="">
+                <label asp-for="TrailMap" class="col-2"></label>
+                <input asp-for="TrailMap"/>
+                <span asp-validation-for="TrailMap" class="text-danger"></span>
+            </div>
+            <div class="">
                 <input type="submit" class="btn btn-primary" value="Create Record"/>
             </div>
         </form>

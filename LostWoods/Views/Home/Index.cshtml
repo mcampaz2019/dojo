@@ -14,6 +14,7 @@
             <table class="table table-striped table-bordered text-white ">
                 <thead class="bg-primary">
                     <th scope="col" class="p-2 bd-highlight w-35  font-weight-bolder">Trail Name</a></th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Description</th>
                     <th class="p-2 bd-highlight  font-weight-bolder">Length</th>
                     <th class="p-2 bd-highlight  font-weight-bolder">Elevation Gain</th>
                     <th class="p-2 bd-highlight  font-weight-bolder">Max Elevation</th>
@@ -26,6 +27,7 @@
                     {
                         <tr>
                             <th scope="row"><a href="trails/@trail.TrailId" class="nav-link">@trail.TrailName</a></th>
+                            <td >@trail.Description miles, roundtrip</td>
                             <td >@trail.Length miles, roundtrip</td>
                             <td >@trail.ElevationGain ft.</td>
                             <td >@trail.MaxElevation ft.</td>

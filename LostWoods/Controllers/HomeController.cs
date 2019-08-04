@@ -46,7 +46,7 @@ namespace LostWoods.Controllers
         }
 
         [HttpGet("/trails/{Id}")]
-        public IActionResult Trails(LostWoods.Models.Trail thisTrail, int Id)
+        public IActionResult Trails(int Id)
         {
             var trailToDisplay = _trailFactory.FindById(Id);
             return View(trailToDisplay);

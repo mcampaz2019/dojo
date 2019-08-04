@@ -28,9 +28,8 @@ namespace LostWoods.Factory
         public void Add(Trail item)
         {
             using(IDbConnection dbConnection = Connection){
-                string query = "INSERT INTO trail (TrailName, Length, ElevationGain, MaxElevation, Longitude," + 
-                                "Latitude) VALUES ( @TrailName, @Length, @ElevationGain, @MaxElevation, " +
-                                "@Longitude, @Latitude)";
+               // string trailmap = @Trailmap;
+                string query = "INSERT INTO trail (TrailName, Description, Length, ElevationGain, MaxElevation, Longitude, Latitude, TrailMap) VALUES (@TrailName, @Description, @Length, @ElevationGain, @MaxElevation, @Longitude, @Latitude, @TrailMap)";
                 dbConnection.Open();
                 dbConnection.Execute(query, item); 
             }
@@ -50,8 +49,7 @@ namespace LostWoods.Factory
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Trail>("SELECT * FROM trail WHERE TrailId = @TrailId", 
-                                                    new {Id = id}).FirstOrDefault();
+                return dbConnection.Query<Trail>("SELECT * FROM trail WHERE TrailId = @id", new {id = id}).FirstOrDefault();
             }
         }
     }

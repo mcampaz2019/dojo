@@ -11,9 +11,11 @@
     </div>
     <div class="d-flex flex-row p-2 m-2" >  
         <div class="card p-2 m-2">
-            <div class="card-header"></div>
+            <div class="card-header">
+                <div class="title"><h2>Description</h2></div>
+            </div>
             <div class="card-body">
-                <div class="title"><h2>Description</h2></div>            
+                            
                 <div class="d-flex flex-column" >
                     <div class="p-2 bd-highlight">
                         <h4>Trail Length</h4>
@@ -36,18 +38,20 @@
             </div>
         </div>
         <div class="card p-2 m-2">
-            <div class="card-header"></div>
+            <div class="card-header">
+                <div class="title"><h2>Location</h2></div>
+            </div>
             <div class="card-body">
-                <div class="title">Location</div>
+                
                 <div>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21211.298486798918!2d-122.49017177467626!3d48.352600421419666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485668866cf7c99%3A0xc5968c73801e776!2sCraft+Island!5e0!3m2!1sen!2sus!4v1564883065709!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:2" allowfullscreen>
                     </iframe>
                 </div>
             </div>        
             <div class="card-footer">
-                <div class="d-flex flex-row flex-row-reverse mb-3">
-                   <div class="d-flex">Logitude  @Model.Longitude</div>
-                   <div class="d-flex">Latitude  @Model.Latitude</div>
+                <div class="d-flex flex-row justify-content-between mb-3">
+                   <div class="d-flex ">Logitude  @Model.Longitude</div>
+                   <div class="d-flex ">Latitude  @Model.Latitude</div>
                 </div>
             </div>
         </div>
