@@ -11,34 +11,34 @@
         @model Trail
         <form asp-controller="Home" asp-action="ProcessAdd" method="post">
             <div class="form-control">
-                <span asp-validation-for="TrailName"></span>
                 <label asp-for="TrailName"></label>
                 <input asp-for="TrailName"/>
+                <span asp-validation-for="TrailName" class="text-danger"></span>
             </div>
             <div class="form-control">
-                <span asp-validation-for="Length"></span>
                 <label asp-for="Length"></label>
                 <input asp-for="Length"/>
+                <span asp-validation-for="Length" class="text-danger"></span>
             </div>
             <div class="form-control">
-                <span asp-validation-for="ElevationGain"></span>
                 <label asp-for="ElevationGain"></label>
                 <input asp-for="ElevationGain"/>
+                <span asp-validation-for="ElevationGain" class="text-danger"></span>
             </div>
             <div class="form-control">
-                <span asp-validation-for="MaxElevation"></span>
                 <label asp-for="MaxElevation"></label>
                 <input asp-for="MaxElevation"/>
+                <span asp-validation-for="MaxElevation" class="text-danger"></span>
             </div>
             <div class="form-control">
-                <span asp-validation-for="Longitude"></span>
                 <label asp-for="Longitude"></label>
                 <input asp-for="Longitude"/>
+                <span asp-validation-for="Longitude" class="text-danger"></span>
             </div>
             <div class="form-control">
-                <span asp-validation-for="Latitude"></span>
                 <label asp-for="Latitude"></label>
                 <input asp-for="Latitude"/>
+                <span asp-validation-for="Latitude" class="text-danger"></span>
             </div>
             <div class="form-control">
                 <input type="submit" class="btn btn-primary" value="Create Record"/>

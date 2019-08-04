@@ -7,25 +7,25 @@
 <div class="text-center">
     <div class="bg-primary text-white">
         <h1>Lost In The Woods </h1>
-        <p>List of Hiking Trails near Seattle</p>
+        <p class="d-flex flex-row flex-row-reverse mr-2 p-1">List of Hiking Trails near Seattle</p>
     </div>
     <div class="card">
         <div class="d-flex mb-3">
             <table class="table table-striped table-bordered text-white ">
                 <thead class="bg-primary">
-                    <th scope="col" class="p-2 bd-highlight w-35  font-weight-bolder">Trail Name</th>
-                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Length</th>
-                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Elevation Gain</th>
-                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Max Elevation</th>
-                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Logitude</th>
-                    <th class="p-2 bd-highlight w-15 font-weight-bolder">Latitude</th>
-                    <th class="p-2 bd-highlight w-20 font-weight-bolder">Updated At</th>
+                    <th scope="col" class="p-2 bd-highlight w-35  font-weight-bolder">Trail Name</a></th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Length</th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Elevation Gain</th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Max Elevation</th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Logitude</th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Latitude</th>
+                    <th class="p-2 bd-highlight  font-weight-bolder">Updated At</th>
                 </thead>
                 <tbody class="text-primary">
                     @foreach (var trail in Model)
                     {
                         <tr>
-                            <th scope="row">@trail.TrailName</th>
+                            <th scope="row"><a href="trails/@trail.TrailId" class="nav-link">@trail.TrailName</a></th>
                             <td >@trail.Length miles, roundtrip</td>
                             <td >@trail.ElevationGain ft.</td>
                             <td >@trail.MaxElevation ft.</td>

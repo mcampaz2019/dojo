@@ -9,11 +9,11 @@ namespace LostWoods.Models
     {
         public int TrailId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please provide a trail name.")]
         [Display(Name = "Trail Name: ")]
         public string TrailName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please provide the length of the trail.")]
         [Display(Name = "Trail Length: ")]
         public float Length { get; set; }
 
@@ -23,13 +23,13 @@ namespace LostWoods.Models
         [Display(Name = "Max Elevation: ")]
         public float MaxElevation { get; set; }
 
-        [Required]
-        [Range(-180, 180)]
+        [Range(-180, 180, ErrorMessage = "Please provide valid longitude, [-180, 180]")]
         [Display(Name = "Longitude: ")]
+        [Required(ErrorMessage = "Please provide valid longitude, [-180, 180]")]
         public float Longitude { get; set; }
 
-        [Required]
-        [Range(-90, 90)]
+        [Required(ErrorMessage = "Please provide valid latitude, [-90, 90]")]
+        [Range(-90, 90, ErrorMessage = "Please provide valid latitude, [-90, 90]")]
         [Display(Name = "Latitude: ")]
         public float Latitude { get; set; }
 

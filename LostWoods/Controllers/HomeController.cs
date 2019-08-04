@@ -34,8 +34,22 @@ namespace LostWoods.Controllers
         [HttpPost("ProcessAdd")]
         public IActionResult ProcessAdd(LostWoods.Models.Trail newTrail)
         {
-            _trailFactory.Add(newTrail);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _trailFactory.Add(newTrail);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("NewTrail");
+            }
+        }
+
+        [HttpGet("/trails/{Id}")]
+        public IActionResult Trails(LostWoods.Models.Trail thisTrail, int Id)
+        {
+            var trailToDisplay = _trailFactory.FindById(Id);
+            return View(trailToDisplay);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

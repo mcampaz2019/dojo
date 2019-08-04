@@ -50,7 +50,7 @@ namespace LostWoods.Factory
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Trail>("SELECT * FROM trail WHERE idtrail = @Id", 
+                return dbConnection.Query<Trail>("SELECT * FROM trail WHERE TrailId = @TrailId", 
                                                     new {Id = id}).FirstOrDefault();
             }
         }
