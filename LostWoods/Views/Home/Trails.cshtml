@@ -5,46 +5,47 @@
 @model Trail;
 
 <div class="text-center">
-    <div class="bg-primary text-white">
+    <div class="bg-primary text-white rounded">
         <h1>Mailbox Peak</h1>
         <p class="d-flex flex-row flex-row-reverse mr-2 p-1">List of Hiking Trails near Seattle</p>
     </div>
     <div class="d-flex flex-row p-2 m-2" >  
-        <div class="card p-2 m-2">
+        <div class="card p-2 m-2 rounded">
             <div class="card-header">
-                <div class="title"><h2>Description</h2></div>
+                <div class="title  text-primary"><h2>@Model.TrailName</h2></div>
             </div>
             <div class="card-body">
-                            
                 <div class="d-flex flex-column" >
-                    <div class="p-2 bd-highlight">
-                        <h4>Trail Length</h4>
+                    <div class="p-2 bd-highlight text-primary">
+                        <h5>@Model.Description.Split("--")[0]</h5>
+                        <h6>@Model.Description.Split("--")[1].Split(':')[0]</h6>
                     </div>
-                    <div class="p-2 bd-highlight">
-                        <h4>Elevation Gain</h4>
+                    <div class="p-2 bd-highlight text-justify">
+                        <h4>@Model.Description.Split(':')[1]</h4>
                     </div>
-                    <div class="p-2 bd-highlight">
-                        <h4>Max elevation</h4>
+                    <div class="p-2 bd-highlight text-justify">
+                        <h5>Trail Length: </h5>
+                        <div class="pl-8 text-center col-5">@Model.Length miles roundtrip</div>
                     </div>
-                    <div class="p-2 bd-highlight">
-                        <h4>Max elevation</h4>
+                    <div class="p-2 bd-highlight text-justify">
+                        <h5>Elevation Gain:</h5>
+                        <div class="pl-8 text-center col-6">@Model.ElevationGain ft</div>
                     </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex flex-row flex-row-reverse mb-3">
-                   
+                    <div class="p-2 bd-highlight text-justify">
+                        <h4>Max elevation: </h4>
+                        <div class="pl-8 text-center col-6">@Model.MaxElevation ft</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card p-2 m-2">
+        <div class="card p-2 m-2 col-6 rounded">
             <div class="card-header">
-                <div class="title"><h2>Location</h2></div>
+                <div class="title text-primary"><h2>Location</h2></div>
             </div>
             <div class="card-body">
                 
-                <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21211.298486798918!2d-122.49017177467626!3d48.352600421419666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485668866cf7c99%3A0xc5968c73801e776!2sCraft+Island!5e0!3m2!1sen!2sus!4v1564883065709!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:2" allowfullscreen>
+                <div class="d-flex flex-column embed-responsive embed-responsive-4by3 mb-3  rounded">
+                    <iframe class="embed-responsive-item" src="@Model.TrailMap"  frameborder="2" style="border:2" allowfullscreen>
                     </iframe>
                 </div>
             </div>        
